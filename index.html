@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio Profesional | Soluciones Profesionales</title>
+  <meta name="description" content="Estudio Profesional ofrece servicios de calidad orientados a resultados. Diseño limpio, atención personalizada y soluciones efectivas.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f7f8fa;
+      --text: #1a1a1a;
+      --text-muted: #5c5c5c;
+      --border: #e5e7eb;
+      --accent: #2c3e50;
+      --accent-hover: #1a252f;
+      --soft: #eef1f5;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --radius: 10px;
+      --transition: 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: box-shadow var(--transition);
+    }
+
+    header.scrolled {
+      box-shadow: var(--shadow);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(44, 62, 80, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 0 100px;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Sections common */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Servicios */
+    .servicios {
+      background: var(--bg);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: #d1d5db;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 650;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Beneficios */
+    .beneficios {
+      background: var(--bg-alt);
+    }
+
+    .beneficios-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .beneficio {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .beneficio-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .beneficio h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .beneficio p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Sobre nosotros */
+    .sobre {
+      background: var(--bg);
+    }
+
+    .sobre-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .sobre-text h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: -0.4px;
+    }
+
+    .sobre-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .sobre-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 28px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .sobre-visual {
+      background: var(--soft);
+      border-radius: var(--radius);
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .sobre-visual-inner {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Testimonios */
+    .testimonios {
+      background: var(--bg-alt);
+    }
+
+    .testimonio {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .testimonio:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .testimonio p {
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 20px;
+      font-size: 0.98rem;
+    }
+
+    .testimonio-author {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .testimonio-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Contacto */
+    .contacto {
+      background: var(--bg);
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contacto-info h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .contacto-info p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .contacto-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .contacto-item strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--bg);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--accent);
+      color: #e5e7eb;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* WhatsApp floating button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 58px;
+      height: 58px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+    }
+
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .beneficios-list {
+        grid-template-columns: 1fr;
+      }
+
+      .sobre-content,
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .sobre-visual {
+        height: 240px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 120px 0 70px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .sobre-stats {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Estudio Profesional</a>
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#sobre">Nosotros</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Cotizar</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="fade-up">Soluciones profesionales<br>diseñadas para crecer</h1>
+      <p class="fade-up">Acompañamos a empresas y profesionales con un enfoque claro, procesos eficientes y resultados medibles.</p>
+      <div class="hero-ctas fade-up">
+        <a href="#contacto" class="btn">Solicitar información</a>
+        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="servicios" id="servicios">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>Servicios</h2>
+        <p>Ofrecemos un conjunto de soluciones estructuradas para cubrir las necesidades principales de tu proyecto o negocio.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card fade-up">
+          <div class="card-icon">01</div>
+          <h3>Consultoría estratégica</h3>
+          <p>Análisis de situación actual, definición de objetivos y plan de acción claro y realista.</p>
+        </div>
+        <div class="card fade-up">
+          <div class="card-icon">02</div>
+          <h3>Implementación de procesos</h3>
+          <p>Diseño e implementación de flujos de trabajo eficientes que optimizan tiempo y recursos.</p>
+        </div>
+        <div class="card fade-up">
+          <div class="card-icon">03</div>
+          <h3>Acompañamiento continuo</h3>
+          <p>Seguimiento cercano, ajustes periódicos y soporte para mantener los resultados en el tiempo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="beneficios" id="beneficios">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>Beneficios</h2>
+        <p>Trabajar con nosotros significa claridad, profesionalismo y un enfoque orientado a resultados.</p>
+      </div>
+      <div class="beneficios-list">
+        <div class="beneficio fade-up">
+          <div class="beneficio-num">1</div>
+          <div>
+            <h3>Enfoque personalizado</h3>
+            <p>Cada propuesta se adapta a las características y objetivos específicos de tu proyecto.</p>
+          </div>
+        </div>
+        <div class="beneficio fade-up">
+          <div class="beneficio-num">2</div>
+          <div>
+            <h3>Comunicación clara</h3>
+            <p>Informes transparentes y canales de comunicación directos para que siempre sepas el avance.</p>
+          </div>
+        </div>
+        <div class="beneficio fade-up">
+          <div class="beneficio-num">3</div>
+          <div>
+            <h3>Metodología probada</h3>
+            <p>Procesos estructurados que reducen la incertidumbre y aumentan la probabilidad de éxito.</p>
+          </div>
+        </div>
+        <div class="beneficio fade-up">
+          <div class="beneficio-num">4</div>
+          <div>
+            <h3>Resultados medibles</h3>
+            <p>Definimos indicadores claros desde el inicio para evaluar el impacto de cada acción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre nosotros -->
+  <section class="sobre" id="sobre">
+    <div class="container">
+      <div class="sobre-content">
+        <div class="sobre-text fade-up">
+          <h2>Sobre nosotros</h2>
+          <p>Estudio Profesional es un equipo multidisciplinario dedicado a ofrecer soluciones de alta calidad con un enfoque práctico y orientado a resultados.</p>
+          <p>Creemos en la simplicidad, la transparencia y el valor real para nuestros clientes. Cada proyecto se trata con el mismo nivel de rigor y compromiso.</p>
+          <div class="sobre-stats">
+            <div class="stat">
+              <strong>+120</strong>
+              <span>Proyectos completados</span>
+            </div>
+            <div class="stat">
+              <strong>98%</strong>
+              <span>Clientes satisfechos</span>
+            </div>
+            <div class="stat">
+              <strong>8</strong>
+              <span>Años de experiencia</span>
+            </div>
+          </div>
+        </div>
+        <div class="sobre-visual fade-up">
+          <div class="sobre-visual-inner">
+            <strong style="font-size: 1.4rem; color: var(--accent); display: block; margin-bottom: 8px;">Estudio Profesional</strong>
+            Soluciones claras. Resultados concretos.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="testimonios" id="testimonios">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>Testimonios</h2>
+        <p>Lo que dicen quienes ya han trabajado con nosotros.</p>
+      </div>
+      <div class="grid-3">
+        <div class="testimonio fade-up">
+          <p>"El proceso fue claro desde el primer día. Cumplieron plazos y el resultado superó nuestras expectativas."</p>
+          <div class="testimonio-author">Laura Méndez</div>
+          <div class="testimonio-role">Directora de Operaciones</div>
+        </div>
+        <div class="testimonio fade-up">
+          <p>"Destacan por su profesionalismo y la calidad de las recomendaciones. Muy recomendables."</p>
+          <div class="testimonio-author">Carlos Ruiz</div>
+          <div class="testimonio-role">Emprendedor</div>
+        </div>
+        <div class="testimonio fade-up">
+          <p>"Excelente comunicación y seguimiento. Sentimos que realmente se involucraron con nuestro proyecto."</p>
+          <div class="testimonio-author">Ana Torres</div>
+          <div class="testimonio-role">Gerente de Proyecto</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="contacto-grid">
+        <div class="contacto-info fade-up">
+          <h2>Hablemos de tu proyecto</h2>
+          <p>Cuéntanos qué necesitas y te responderemos a la brevedad con una propuesta clara y sin compromiso.</p>
+          <div class="contacto-item">
+            <div>
+              <strong>Correo</strong>
+              contacto@estudioprofesional.mx
+            </div>
+          </div>
+          <div class="contacto-item">
+            <div>
+              <strong>Horario de atención</strong>
+              Lunes a viernes, 9:00 – 18:00 hrs
+            </div>
+          </div>
+          <div class="contacto-item">
+            <div>
+              <strong>WhatsApp</strong>
+              Respuesta prioritaria
+            </div>
+          </div>
+        </div>
+        <form class="fade-up" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaremos pronto.');">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos sobre tu proyecto o consulta"></textarea>
+          </div>
+          <button type="submit" class="btn" style="width: 100%;">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Estudio Profesional. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/5215512345678?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios" 
+     class="whatsapp-btn" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075 conf-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
